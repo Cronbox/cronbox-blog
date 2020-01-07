@@ -203,13 +203,13 @@ tr {
 }
 
 .header {
-  postion: relative;
+  position: relative;
   display: block;
-  margin: auto;
-  margin-top: 140px;
-  padding-bottom: 50px;
-  margin-bottom: 50px;
-  border-bottom: 0px solid #f0f0f0;
+
+  margin: 40px auto 50px;
+
+  border-bottom: 0 solid #f0f0f0;
+
   text-align: center;
 
   > h1, h2, h3 {
