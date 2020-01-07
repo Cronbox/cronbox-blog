@@ -33,10 +33,6 @@
 </head>
 
 <body>
-{% block menu %}
-{{ macros::menu(title=config.title, siteurl=config.base_url, extra=config.extra, rss=config.generate_rss) }}
-{% endblock menu %}
-
 {% block content %} {% endblock content %}
 {% block pagination %} {% endblock pagination %}
 
