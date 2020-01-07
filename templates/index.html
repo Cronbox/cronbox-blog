@@ -5,7 +5,7 @@
 <header class="header">
   {% block header %}
   <h1 class="site_title">{{config.title}}</h1>
-  <h4 class="text-secondary">{{config.description | markdown(inline=true) | safe }}</h4>
+  <h5 class="text-secondary">{{config.description | markdown(inline=true) | safe }}</h5>
   {{ macros::social_list(classes="header_list", bsize="small", extra=config.extra, siteurl=config.base_url,
   rss=config.generate_rss) }}
   {% endblock header %}
