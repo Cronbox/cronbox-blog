@@ -18,10 +18,13 @@ description = "О технологиях, подходах и решении п�
 
 taxonomies = [
  {name = "tags", rss = true},
- {name = "categories", paginate_by = 5},  # 5 items per page for a term
+ {name = "categories", paginate_by = 5, rss = true},  # 5 items per page for a term
  {name = "authors"} # Basic definition: no RSS or pagination
 ]
 
 [extra]
 # Put all your custom variables here
 description = "lelelele"
+website="cronbox.pro"
+twitter="mental_foreplay"
+email = "eugene@cronbox.pro"
