@@ -11,10 +11,9 @@ highlight_code = true
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 
-theme = "ergo"
+theme = "tinyblog"
 
 title = "Cronbox Blog"
-
 description = "О технологиях, подходах и решении проблем простым языком"
 
 taxonomies = [
@@ -26,4 +25,3 @@ taxonomies = [
 [extra]
 # Put all your custom variables here
 description = "lelelele"
-profile="img/profile.svg"
