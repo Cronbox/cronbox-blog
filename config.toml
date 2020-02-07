@@ -13,8 +13,8 @@ build_search_index = true
 
 theme = "tinyblog"
 
-title = "Cronbox Blog"
-description = "О технологиях, подходах и решении проблем простым языком"
+title = "Блог Cronbox"
+description = "О мониторинге, cron и технологиях"
 
 taxonomies = [
  {name = "tags", rss = true},
