@@ -131,7 +131,7 @@ service crond restart
 
 ## Полезные ссылки
 
-- [Другие посты из цикла про cron](https://blog.cronbox.pro/tags/cron)
+- [Другие посты из цикла про cron](/tags/cron)
 
 - [Crontab Guru](https://crontab.guru/) - сервис для проверки временных интервалов. Вбиваешь конфигурацию задачи и узнаешь когда она будет запускаться.
 
