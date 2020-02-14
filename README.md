@@ -1,14 +1,12 @@
 # Блог Cronbox
 
-[https://blog.cronbox.pro](https://blog.cronbox.pro)
+[https://blog.cronbox.ru](https://blog.cronbox.ru)
 
 ### Как собрать проект
 
 ```shell script
-zola build --output-dir docs --base-url https://blog.cronbox.pro
+zola build --output-dir docs --base-url https://blog.cronbox.ru
 ```
-
-# Блога Cronbox
 
 ## Как добавить новый пост
 
