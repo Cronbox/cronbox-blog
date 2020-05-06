@@ -25,11 +25,10 @@ taxonomies = [
 ]
 
 [extra]
-# Put all your custom variables here
-description = "lelelele"
+description = "Мониторинг cron задач"
 website="cronbox.ru"
-twitter="mental_foreplay"
-email = "eugene@cronbox.ru"
+twitter=""
+email = ""
 
 open_graph_url = "https://blog.cronbox.ru"
 open_graph_type = "blog"
