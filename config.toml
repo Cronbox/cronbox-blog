@@ -1,14 +1,9 @@
-# The URL the site will be built for
 base_url = "https://blog.cronbox.ru"
 
-# Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 
-# Whether to do syntax highlighting
-# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
 highlight_code = true
 
-# Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 
 theme = "tinyblog"
@@ -20,8 +15,8 @@ description = "О мониторинге, cron и технологиях"
 
 taxonomies = [
  {name = "tags", rss = true},
- {name = "categories", paginate_by = 5, rss = true},  # 5 items per page for a term
- {name = "authors"} # Basic definition: no RSS or pagination
+ {name = "categories", paginate_by = 5, rss = true},
+ {name = "authors"}
 ]
 
 [extra]
@@ -29,6 +24,8 @@ description = "Мониторинг cron задач"
 website="cronbox.ru"
 twitter=""
 email = ""
+
+favicon_type = "image/vnd.microsoft.icon"
 
 open_graph_url = "https://blog.cronbox.ru"
 open_graph_type = "blog"
