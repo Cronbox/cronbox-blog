@@ -1,6 +1,7 @@
 +++
 title = "Cronbox vs Zabbix, Prometheus и т.д."
-date = 2020-01-22
+description = "Зачем нужен Cronbox и в каких сценариях его максимально выгодно использовать. Сравнение с промышленными системами мониторинга - Zabbix и Prometheus."
+date = 2020-05-06
 
 [taxonomies]
 tags = ["cronbox", "мониторинг"]
