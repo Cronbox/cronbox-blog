@@ -21,9 +21,17 @@ taxonomies = [
 
 [extra]
 description = "Мониторинг cron задач"
+
 website="cronbox.ru"
+website_button_hint = "Перейти на cronbox.ru"
+
 twitter=""
+twitter_button_hint = ""
+
 email = ""
+email_button_hint = ""
+
+github_button_hint = ""
 
 favicon_type = "image/vnd.microsoft.icon"
 
