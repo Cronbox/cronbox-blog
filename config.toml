@@ -21,6 +21,7 @@ taxonomies = [
 
 [extra]
 description = "Мониторинг cron задач"
+keywords = "мониторинг задач, мониторинг резервного копирования, cron, мониторинг бэкапов"
 
 website="cronbox.ru"
 website_button_hint = "Перейти на cronbox.ru"
