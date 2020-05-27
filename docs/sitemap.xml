@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    
+        <url>
+            <loc>https://blog.cronbox.ru/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.cronbox.ru/categories/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.cronbox.ru/categories/meta/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.cronbox.ru/categories/meta/page/1/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.cronbox.ru/categories/monitoring/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.cronbox.ru/categories/monitoring/page/1/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.cronbox.ru/categories/tutorial/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.cronbox.ru/categories/tutorial/page/1/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.cronbox.ru/page/1/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.cronbox.ru/planirovschik-zadanii-cron/</loc>
+            
+                <lastmod>2020-05-06</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.cronbox.ru/tags/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.cronbox.ru/tags/cron/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.cronbox.ru/tags/monitoring/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.cronbox.ru/tags/server/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.cronbox.ru/zachem-nuzhen-monitoring/</loc>
+            
+                <lastmod>2020-05-25</lastmod>
+            
+        </url>
+    
+</urlset>

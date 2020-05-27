@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- SEO -->
+  
+<title>Планировщик задач Cron | Блог Cronbox</title>
+
+
+  
+<meta name="Description" content="Все самое необходимое что нужно знать о планировщике заданий cron. Какие файлы конфигурации бывают, как создавать расписание.">
+
+
+  
+  <meta name="keywords" content="мониторинг задач, мониторинг cron, мониторинг резервного копирования, мониторинг бэкапов, cron">
+  
+
+  
+  <meta property="og:url" content="https:&#x2F;&#x2F;blog.cronbox.ru" />
+  
+
+  
+  <meta property="og:title" content="Блог Cronbox" />
+  
+
+  
+<meta property="og:description" content="Все самое необходимое что нужно знать о планировщике заданий cron. Какие файлы конфигурации бывают, как создавать расписание."/>
+
+
+  
+  <meta property="og:type" content="blog" />
+  
+
+  
+
+  <link rel="icon" type="image&#x2F;vnd.microsoft.icon" href="/favicon.ico">
+
+  
+    
+        <!-- Yandex.Webmaster Verification Code -->
+        <meta name="yandex-verification" content="7e31b2e5536fb5d8" />
+    
+
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <!--  css -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700&display=swap"
+        rel="stylesheet">
+
+  <!-- theme -->
+  <link rel="stylesheet" href="https:&#x2F;&#x2F;blog.cronbox.ru/tinyblog.css">
+
+  
+</head>
+
+<body>
+
+<nav id="overlord" class="overlord">
+  
+<div id="logo" class="p-4">
+    <a href="https:&#x2F;&#x2F;blog.cronbox.ru" title="Вернуться на главную страницу">
+        <i class="logo__icon fas fa-chevron-left mr-1"></i> < Назад
+    </a>
+</div>
+
+</nav>
+
+<section class="container">
+  
+  <h1 class="page-title mt-0">
+    Планировщик задач Cron
+  </h1>
+  
+<div class="frontmatter font-weight-bold">
+    <div class="d-inline-block">
+        <time class="article_time" datetime="2020-05-06">May 06, 2020</time>.
+    </div>
+
+    <div class="d-inline-block article_time"> Время чтения &mdash; 3 мин.</div>
+</div>
+
+
+  <div class="mb-3 mt-3">
+    
+      <a class="btn btn-tiny btn-light" href="/tags/cron/">cron</a>
+    
+  </div>
+
+  <h2 id="vvedenie">Введение</h2>
+<p>Cron - это программа, которая выполняет задания в рамках указанного расписания. 
+Такой класс программ обычно называют планировщиками задач.</p>
+<p>В качестве задач выступают команды из оболочки операционной системы. </p>
+<p>Основные возможности:</p>
+<ul>
+<li>Запускать задачи в указанные даты и время.</li>
+<li>Запускать задачи с интервалом – например, раз в 5 минут.</li>
+</ul>
+<h3 id="failovaia-struktura">Файловая структура</h3>
+<p>Cron поддерживает множественные места хранения расписаний. Это было сделано для того чтобы:</p>
+<ol>
+<li>
+<p>Каждый пользователь мог работать только со своими задачами.</p>
+</li>
+<li>
+<p>Разделить выполнение задач тематически. Например, если положить скрипт в каталог <code>/etc/cron.daily</code>, то он выполнится 1 раз в сутки.</p>
+</li>
+</ol>
+<p>Главный файл с расписаниями — <code>/etc/crontab</code>.</p>
+<p>Тематические каталоги:</p>
+<ul>
+<li><code>/etc/cron.hourly/*</code> — сценарии, выполняющиеся каждый час.</li>
+<li><code>/etc/cron.daily/*</code> — сценарии, выполняющиеся каждый день.</li>
+<li><code>/etc/cron.weekly/*</code> — сценарии, выполняющиеся каждую неделю.</li>
+<li><code>/etc/cron.monthly/*</code> — сценарии, выполняющиеся каждый месяц.</li>
+</ul>
+<p>В тематические каталоги помещаются готовые скрипты, расписание для скриптов не указывается. 
+Если создать скрипт в каталоге <code>/etc/cron.hourly</code>, то он будет запускаться 1 раз в час. </p>
+<p>Если нужно сохранить расписание в отдельном файле, то можно поместить его в каталог <code>/etc/cron.d</code>.</p>
+<h3 id="format-zapisi">Формат записи</h3>
+<p>Существует 2 формата записи:</p>
+<ul>
+<li>
+<p>с указанием имени пользователя. Используется только для файла <code>crontab</code>. Например, вот так:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">&lt;минута&gt; &lt;час&gt; &lt;день-месяца&gt; &lt;месяц&gt; &lt;день-недели&gt; &lt;пользователь&gt; &lt;команда&gt;</span><span style="color:#c0c5ce;">
+</span></pre></li>
+<li>
+<p>без указания. Используется для всех остальных случаев.</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">&lt;минута&gt; &lt;час&gt; &lt;день-месяца&gt; &lt;месяц&gt; &lt;день-недели&gt; &lt;команда&gt;</span><span style="color:#c0c5ce;">
+</span></pre></li>
+</ul>
+<p>Если значение поля не важно, то достаточно указать знак &quot;<code>*</code>&quot; (звездочка). 
+В таком случае cron использует предоставленные значения.
+Но что будет если указать для всех временных полей &quot;<code>*</code>&quot;? Cron вызовет команду раз в минуту.</p>
+<p>В главном конфигурационном файле <code>/etc/crontab</code> добавлены подсказки, в виде комментариев:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;"># ┌───────────── minute (0 - 59)</span><span style="color:#c0c5ce;">
+# │ ┌───────────── hour (0 - 23)</span><span style="color:#c0c5ce;">
+# │ │ ┌───────────── day of the month (1 - 31)</span><span style="color:#c0c5ce;">
+# │ │ │ ┌───────────── month (1 - 12)</span><span style="color:#c0c5ce;">
+# │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday;</span><span style="color:#c0c5ce;">
+# │ │ │ │ │                                   7 is also Sunday on some systems)</span><span style="color:#c0c5ce;">
+# │ │ │ │ │</span><span style="color:#c0c5ce;">
+# │ │ │ │ │</span><span style="color:#c0c5ce;">
+# * * * * * command to execute</span><span style="color:#c0c5ce;">
+</span></pre><h3 id="primery-intervalov">Примеры интервалов</h3>
+<p>Запускать скрипт для резервного копирования каждый вечер в 23:00 от пользователя <code>backup</code>:<br />
+<code>0 23 * * * backup /scripts/backup.sh
+   </code></p>
+<p>Запускать скрипт каждые 15 минут:<br />
+<code>*/15 * * * * backup /scripts/fetch.sh
+   </code></p>
+<p>Запускать скрипт только в выходные дни:<br />
+<code>*/15 * * * 6-7 backup /scripts/fetch.sh
+   </code></p>
+<p>Запускать скрипт в 5 утра, 1го числа января и февраля:<br />
+<code>5 4 1 1-2 * backup /scripts/fetch.sh
+   </code></p>
+<hr />
+<h2 id="rabota-s-zadachami">Работа с задачами</h2>
+<p>Для примера запустим скрипт резервного копирования <code>/home/eugene/scripts/backup.sh</code> каждый день в 23:00.</p>
+<h4 id="kak-dobavit-zadachu-sposob-1">Как добавить задачу (способ №1)</h4>
+<p>Открываем редактор с расписанием для текущего пользователя</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">crontab -e</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>И добавляем строчку:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">0 23 * * * /home/eugene/scripts/backup.sh</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>В таком случае имя пользователя указывать не нужно.</p>
+<h4 id="kak-dobavit-zadachu-sposob-2">Как добавить задачу (способ №2)</h4>
+<p>Второй способ — создать файл с расписанием в каталог <code>/etc/cron.d</code>, например — <code>/etc/cron.d/site-backup</code>:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">0 23 * * * eugene /home/eugene/scripts/backup.sh</span><span style="color:#c0c5ce;">
+</span></pre><h3 id="primeniaem-nastroiki">Применяем настройки</h3>
+<p>Чтобы Cron перечитал файлы с расписаниями необходимо перезапустить его службу:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">service crond restart</span><span style="color:#c0c5ce;">
+</span></pre><h3 id="kak-udalit-zadachu">Как удалить задачу</h3>
+<p>Это можно сделать как минимум тремя способами:</p>
+<ol>
+<li>Удалить файл с заданием</li>
+<li>Удалить строчку из файла</li>
+<li>Закомментировать строчку<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">#0 23 * * * backup /scripts/backup.sh</span><span style="color:#c0c5ce;">
+</span></pre></li>
+</ol>
+<p>Независимо от выбранного способа, для того чтобы cron обновил список действующих расписаний, 
+необходимо перезапустить службу:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">service crond restart</span><span style="color:#c0c5ce;">
+</span></pre>
+<hr />
+<h2 id="poleznye-ssylki">Полезные ссылки</h2>
+<ul>
+<li>
+<p><a href="/tags/cron">Другие посты из цикла про cron</a></p>
+</li>
+<li>
+<p><a href="https://crontab.guru/">Crontab Guru</a> - сервис для проверки временных интервалов. 
+Достаточно указать расписание в формате cron и сервис покажет когда будет запущена задача. </p>
+</li>
+</ul>
+
+  
+</section>
+
+ 
+
+<footer class="mt-5 mb-5"></footer>
+
+
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(64400824, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+    });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/64400824"
+                    style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+
+</body>
+</html>
