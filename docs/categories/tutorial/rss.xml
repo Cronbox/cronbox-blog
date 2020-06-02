@@ -9,7 +9,7 @@
         <generator>Zola</generator>
         <language>ru</language>
         <atom:link href="https:&#x2F;&#x2F;blog.cronbox.ru/rss.xml" rel="self" type="application/rss+xml"/>
-        <lastBuildDate>2020-05-06</lastBuildDate>
+        <lastBuildDate>2020-05-07</lastBuildDate>
 
         
 
@@ -18,10 +18,10 @@
             
             >
             <title>Планировщик задач Cron</title>
-            <pubDate>2020-05-06</pubDate>
+            <pubDate>2020-05-07</pubDate>
             <link>https:&#x2F;&#x2F;blog.cronbox.ru/planirovschik-zadanii-cron</link>
             <guid>https:&#x2F;&#x2F;blog.cronbox.ru/planirovschik-zadanii-cron</guid>
-            <description>Все самое необходимое что нужно знать о планировщике заданий cron. Какие файлы конфигурации бывают, как создавать расписание.</description>
+            <description>Всё, что нужно знать о планировщике заданий cron: как создавать расписание, какие бывают файлы конфигурации, как удалить задачу.</description>
             
         </item>
         
