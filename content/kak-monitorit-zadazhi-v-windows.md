@@ -4,7 +4,7 @@ description = "Как настроить мониторинг для плани�
 date = 2020-06-04
 
 [taxonomies]
-tags = ["scheduler"]
+tags = ["scheduler", "windows"]
 categories = ["tutorial", "windows"]
 +++
 
