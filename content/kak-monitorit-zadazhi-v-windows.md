@@ -20,7 +20,7 @@ categories = ["tutorial", "windows"]
 
 #### 1. Копируем ссылку монитора
 
-После [создания монитора](https://docs.cronbox.ru/getting-started/) мы получим уникальную ссылку вида:
+После [создания монитора](https://docs.cronbox.ru/getting-started/) формируется уникальная ссылка:
 
 ![alt text](/images/windows-scheduler/monitor-page-url.png "Страница монитора")
 
