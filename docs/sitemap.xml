@@ -12,6 +12,16 @@
         </url>
     
         <url>
+            <loc>https://blog.cronbox.ru/categories/cron/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.cronbox.ru/categories/cron/page/1/</loc>
+            
+        </url>
+    
+        <url>
             <loc>https://blog.cronbox.ru/categories/meta/</loc>
             
         </url>
@@ -38,6 +48,23 @@
     
         <url>
             <loc>https://blog.cronbox.ru/categories/tutorial/page/1/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.cronbox.ru/categories/windows/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.cronbox.ru/categories/windows/page/1/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.cronbox.ru/kak-monitorit-zadazhi-v-windows/</loc>
+            
+                <lastmod>2020-06-22</lastmod>
             
         </url>
     
@@ -69,7 +96,17 @@
         </url>
     
         <url>
+            <loc>https://blog.cronbox.ru/tags/scheduler/</loc>
+            
+        </url>
+    
+        <url>
             <loc>https://blog.cronbox.ru/tags/server/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.cronbox.ru/tags/windows/</loc>
             
         </url>
     
