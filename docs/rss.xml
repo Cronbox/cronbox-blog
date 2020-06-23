@@ -9,7 +9,7 @@
         <generator>Zola</generator>
         <language>ru</language>
         <atom:link href="https:&#x2F;&#x2F;blog.cronbox.ru/rss.xml" rel="self" type="application/rss+xml"/>
-        <lastBuildDate>2020-06-22</lastBuildDate>
+        <lastBuildDate>2020-06-23</lastBuildDate>
 
         
 
@@ -18,10 +18,10 @@
             
             >
             <title>Как мониторить задачи из планировщика Windows</title>
-            <pubDate>2020-06-22</pubDate>
+            <pubDate>2020-06-23</pubDate>
             <link>https:&#x2F;&#x2F;blog.cronbox.ru/kak-monitorit-zadazhi-v-windows</link>
             <guid>https:&#x2F;&#x2F;blog.cronbox.ru/kak-monitorit-zadazhi-v-windows</guid>
-            <description>Как настроить мониторинг для планировщика задач Windows.</description>
+            <description>Пошаговая настройка мониторинга для планировщика задач Windows.</description>
             
         </item>
         
