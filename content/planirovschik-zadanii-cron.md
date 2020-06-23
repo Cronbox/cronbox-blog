@@ -157,6 +157,6 @@ service crond restart
 
 - [Другие посты из цикла про cron](/tags/cron).
 
-- [Crontab Guru](https://crontab.guru/) — сервис для проверки временных интервалов. 
+- [Crontab от Cronbox](https://crontab.cronbox.ru/) — бесплатный сервис для генерации расписания cron. 
 Достаточно указать расписание в формате cron, и сервис покажет, когда будет запущена задача. 
 
