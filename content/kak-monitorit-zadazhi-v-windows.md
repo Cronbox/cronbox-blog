@@ -1,7 +1,7 @@
 +++
 title = "Как мониторить задачи из планировщика Windows"
-description = "Как настроить мониторинг для планировщика задач Windows."
-date = 2020-06-22
+description = "Пошаговая настройка мониторинга для планировщика задач Windows."
+date = 2020-06-23
 
 [taxonomies]
 tags = ["scheduler", "windows"]
