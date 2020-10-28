@@ -53,7 +53,7 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
   <!-- fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
         rel="stylesheet">
 
   <!-- theme -->
@@ -68,7 +68,7 @@
   
 <div id="logo" class="p-4">
     <a href="https:&#x2F;&#x2F;blog.cronbox.ru" title="Вернуться на главную страницу">
-        <i class="logo__icon fas fa-chevron-left mr-1"></i> < Назад
+        &lsaquo; Назад
     </a>
 </div>
 
@@ -91,7 +91,7 @@
 
   <div class="mb-3 mt-3">
     
-      <a class="btn btn-tiny btn-light" href="/tags/cron/">cron</a>
+      <a class="btn btn-tiny btn-light" href="/tags/cron/" title="Посмотреть все посты с тэгом 'cron'">cron</a>
     
   </div>
 
@@ -131,12 +131,12 @@
 <li>
 <p>с указанием имени пользователя — используется только для файла <code>crontab</code>, например, вот так:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">&lt;минута&gt; &lt;час&gt; &lt;день-месяца&gt; &lt;месяц&gt; &lt;день-недели&gt; &lt;пользователь&gt; &lt;команда&gt;
+<span style="color:#c0c5ce;">&lt;минута&gt; &lt;час&gt; &lt;день-месяца&gt; &lt;месяц&gt; &lt;день-недели&gt; &lt;пользователь&gt; &lt;команда&gt;</span><span style="color:#c0c5ce;">
 </span></pre></li>
 <li>
 <p>без указания — используется для всех остальных случаев.</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">&lt;минута&gt; &lt;час&gt; &lt;день-месяца&gt; &lt;месяц&gt; &lt;день-недели&gt; &lt;команда&gt;
+<span style="color:#c0c5ce;">&lt;минута&gt; &lt;час&gt; &lt;день-месяца&gt; &lt;месяц&gt; &lt;день-недели&gt; &lt;команда&gt;</span><span style="color:#c0c5ce;">
 </span></pre></li>
 </ul>
 <p>Если значение поля не важно, то достаточно указать знак «<code>*</code>» (звёздочка). 
@@ -144,15 +144,15 @@
 Но что будет, если указать для всех временных полей «<code>*</code>»? Cron вызовет команду раз в минуту.</p>
 <p>В главном конфигурационном файле <code>/etc/crontab</code> добавлены подсказки в виде комментариев:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;"># ┌───────────── minute (0 - 59)
-# │ ┌───────────── hour (0 - 23)
-# │ │ ┌───────────── day of the month (1 - 31)
-# │ │ │ ┌───────────── month (1 - 12)
-# │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday;
-# │ │ │ │ │                                   7 is also Sunday on some systems)
-# │ │ │ │ │
-# │ │ │ │ │
-# * * * * * command to execute
+<span style="color:#c0c5ce;"># ┌───────────── minute (0 - 59)</span><span style="color:#c0c5ce;">
+# │ ┌───────────── hour (0 - 23)</span><span style="color:#c0c5ce;">
+# │ │ ┌───────────── day of the month (1 - 31)</span><span style="color:#c0c5ce;">
+# │ │ │ ┌───────────── month (1 - 12)</span><span style="color:#c0c5ce;">
+# │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday;</span><span style="color:#c0c5ce;">
+# │ │ │ │ │                                   7 is also Sunday on some systems)</span><span style="color:#c0c5ce;">
+# │ │ │ │ │</span><span style="color:#c0c5ce;">
+# │ │ │ │ │</span><span style="color:#c0c5ce;">
+# * * * * * command to execute</span><span style="color:#c0c5ce;">
 </span></pre><h3 id="primery-intervalov">Примеры интервалов</h3>
 <p>Запускать скрипт для резервного копирования каждый вечер в 23:00 от пользователя <code>backup</code>:<br />
 <code>0 23 * * * backup /scripts/backup.sh
@@ -172,34 +172,34 @@
 <h4 id="kak-dobavit-zadachu-sposob-1">Как добавить задачу (способ № 1)</h4>
 <p>Открываем редактор с расписанием для текущего пользователя</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">crontab -e
+<span style="color:#c0c5ce;">crontab -e</span><span style="color:#c0c5ce;">
 </span></pre>
 <p>и добавляем строчку:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">0 23 * * * /home/eugene/scripts/backup.sh
+<span style="color:#c0c5ce;">0 23 * * * /home/eugene/scripts/backup.sh</span><span style="color:#c0c5ce;">
 </span></pre>
 <p>В таком случае имя пользователя указывать не нужно.</p>
 <h4 id="kak-dobavit-zadachu-sposob-2">Как добавить задачу (способ № 2)</h4>
 <p>Второй способ — создать файл с расписанием в каталог <code>/etc/cron.d</code> — например, <code>/etc/cron.d/site-backup</code>:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">0 23 * * * eugene /home/eugene/scripts/backup.sh
+<span style="color:#c0c5ce;">0 23 * * * eugene /home/eugene/scripts/backup.sh</span><span style="color:#c0c5ce;">
 </span></pre><h3 id="primeniaem-nastroiki">Применяем настройки</h3>
 <p>Чтобы cron перечитал файлы с расписаниями, необходимо перезапустить его службу:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">service crond restart
+<span style="color:#c0c5ce;">service crond restart</span><span style="color:#c0c5ce;">
 </span></pre><h3 id="kak-udalit-zadachu">Как удалить задачу</h3>
 <p>Это можно сделать как минимум тремя способами:</p>
 <ol>
 <li>Удалить файл с заданием.</li>
 <li>Удалить строчку из файла.</li>
 <li>Закомментировать строчку.<pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">#0 23 * * * backup /scripts/backup.sh
+<span style="color:#c0c5ce;">#0 23 * * * backup /scripts/backup.sh</span><span style="color:#c0c5ce;">
 </span></pre></li>
 </ol>
 <p>Независимо от выбранного способа, для того чтобы cron обновил список действующих расписаний, 
 необходимо перезапустить службу:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">service crond restart
+<span style="color:#c0c5ce;">service crond restart</span><span style="color:#c0c5ce;">
 </span></pre>
 <hr />
 <h2 id="poleznye-ssylki">Полезные ссылки</h2>
@@ -218,7 +218,11 @@
 
  
 
-<footer class="mt-5 mb-5"></footer>
+<footer class="mt-5 mb-5">
+  <div class="text-tiniest mt-5">
+    <a href="https://github.com/tinyops-ru/tinyblog-zola-theme" target="_blank">TINYBLOG THEME</a>
+  </div>
+</footer>
 
 
 

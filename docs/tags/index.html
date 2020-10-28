@@ -53,7 +53,7 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
   <!-- fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
         rel="stylesheet">
 
   <!-- theme -->
@@ -64,20 +64,46 @@
 
 <body>
 
-<nav id="overlord" class="overlord">
-  
-<div id="logo" class="p-4">
-    <a href="https:&#x2F;&#x2F;blog.cronbox.ru" title="Вернуться на главную страницу">
-        <i class="logo__icon fas fa-chevron-left mr-1"></i> < Назад
-    </a>
+<section class="container">
+    
+<div>
+    
+
+    
+    <h5 class="d-inline-block mr-3">
+        <a href="//cronbox.ru"
+           title="Перейти на cronbox.ru"
+           target="_blank"
+           class="main-page__top-menu__item">
+            Сайт
+        </a>
+    </h5>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5 class="d-inline-block mr-3">
+        <a href="https:&#x2F;&#x2F;blog.cronbox.ru/rss.xml"
+           title="Посмотреть RSS-ленту"
+           target="_blank"
+           class="main-page__top-menu__item">
+            RSS
+        </a>
+    </h5>
+    
 </div>
 
-</nav>
 
-<section class="container">
-
-    <h3 class="text-dark">Тэги</h3>
-    <div class="text-secondary text-small font-weight-bold mb-4">Все доступные тэги</div>
+    <h3 class="text-dark">Все тэги блога</h3>
 
     
     
@@ -86,31 +112,36 @@
         
             <li class="p-0 m-0">
                 <h6 class="mt-0 mb-2">
-                    <a href="/tags/cron">cron</a>
+                    <a href="/tags/cron"
+                       title="Перейти к списку постов с тэгом 'cron'">cron</a>
                 </h6>
             </li>
         
             <li class="p-0 m-0">
                 <h6 class="mt-0 mb-2">
-                    <a href="/tags/monitoring">monitoring</a>
+                    <a href="/tags/monitoring"
+                       title="Перейти к списку постов с тэгом 'monitoring'">monitoring</a>
                 </h6>
             </li>
         
             <li class="p-0 m-0">
                 <h6 class="mt-0 mb-2">
-                    <a href="/tags/scheduler">scheduler</a>
+                    <a href="/tags/scheduler"
+                       title="Перейти к списку постов с тэгом 'scheduler'">scheduler</a>
                 </h6>
             </li>
         
             <li class="p-0 m-0">
                 <h6 class="mt-0 mb-2">
-                    <a href="/tags/server">server</a>
+                    <a href="/tags/server"
+                       title="Перейти к списку постов с тэгом 'server'">server</a>
                 </h6>
             </li>
         
             <li class="p-0 m-0">
                 <h6 class="mt-0 mb-2">
-                    <a href="/tags/windows">windows</a>
+                    <a href="/tags/windows"
+                       title="Перейти к списку постов с тэгом 'windows'">windows</a>
                 </h6>
             </li>
         
@@ -120,7 +151,11 @@
 
  
 
-<footer class="mt-5 mb-5"></footer>
+<footer class="mt-5 mb-5">
+  <div class="text-tiniest mt-5">
+    <a href="https://github.com/tinyops-ru/tinyblog-zola-theme" target="_blank">TINYBLOG THEME</a>
+  </div>
+</footer>
 
 
 
