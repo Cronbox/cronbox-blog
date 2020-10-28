@@ -25,11 +25,13 @@ keywords = "мониторинг задач, мониторинг cron, мони
 
 website="cronbox.ru"
 website_button_hint = "Перейти на cronbox.ru"
+website_button_title = "Сайт"
 
 twitter=""
 twitter_button_hint = ""
 
 email = ""
+email_button_title = "Написать на почту"
 email_button_hint = ""
 
 github_button_hint = ""
