@@ -85,7 +85,7 @@
         <time class="article_time" datetime="2020-06-23">June 23, 2020</time>.
     </div>
 
-    <div class="d-inline-block article_time"> Время чтения &mdash; 2 мин.</div>
+    <div class="d-inline-block article_time"> Время чтения &mdash; 3 мин.</div>
 </div>
 
 
@@ -101,26 +101,70 @@
 первоначально он был создан для мониторинга cron-задач в Linux, вы можете пользоваться сервисом и для Windows-серверов.</p>
 <p>Планировщик задач для Windows умеет делать всё то же, что и <code>cron</code>, и даже имеет дополнительные возможности. Например, поддерживает часовые
 пояса.</p>
-<p><img src="/images/windows-scheduler.png" alt="alt text" title="Планировщик задач Windows" /></p>
-<p>Для примера интегрируем задачу резервного копирования с Cronbox.</p>
 <h4 id="1-sozdaiom-monitor-i-poluchaem-ssylku">1. Создаём монитор и получаем ссылку</h4>
 <p>После <a href="https://docs.cronbox.ru/getting-started/">создания монитора</a> формируется уникальная ссылка:</p>
-<p><img src="/images/windows-scheduler/monitor-page-url.png" alt="alt text" title="Страница монитора" /></p>
+<p><img src="/images/windows-scheduler/monitor-page-url.png" alt="Страница монитора" title="Страница монитора" /></p>
 <p>Копируем её в блокнот, она ещё пригодится.</p>
-<h4 id="2-nastraivaem-zadachu-v-planirovshchike">2. Настраиваем задачу в планировщике</h4>
+<h4 id="2-otkryvaem-planirovshchik-zadach">2. Открываем планировщик задач</h4>
+<details>
+    <summary>Для Windows 10</summary>
+    <p>
+        Пуск > пишем "Планиро" и операционная система предложит нам Планировщик заданий.
+        <img src="/images/windows-scheduler/open-windows-scheduler.png"
+             title="Как запустить планировщик задач Windows"/>            
+    </p>
+</details>
+<details>
+    <summary>Для предыдущих версий Windows</summary>
+    <p>
+        Пуск > Выполнить > taskschd            
+    </p>
+</details>
+<p>Откроется приложение планировщика:</p>
+<p><img src="/images/windows-scheduler/windows-scheduler.png" alt="Планировщик задач Windows" title="Планировщик задач Windows" /></p>
+<p>Для примера интегрируем задачу резервного копирования с Cronbox.</p>
+<h4 id="3-sozdaiom-zadachu">3. Создаём задачу</h4>
 <p>Настроим отправку HTTP-запроса к монитору после завершения выполнения задачи. 
-Для отправки используем утилиту <code>curl</code> для Windows, её можно <a href="https://curl.haxx.se/windows/">скачать с официального сайта</a>. </p>
-<p>Открываем «Планировщик заданий», затем — свойства (Properties) задачи для резервного копирования:</p>
-<p><img src="/images/windows-scheduler/edit-scheduler-task.png" alt="alt text" title="Редактирование задачи в планировщике Windows" /></p>
-<p>На вкладке Action (в русской версии «Действие») нажимаем Edit:</p>
-<p><img src="/images/windows-scheduler/task-edit-action.png" alt="alt text" title="Редактирование задачи" /></p>
-<p>К команде добавляем отправку:</p>
-<p><img src="/images/windows-scheduler/windows-task-append-curl.png" alt="alt text" title="Добавляем curl-запрос" /></p>
-<p>Команда будет выглядеть подобным образом:</p>
+Для отправки используем утилиту <code>curl</code> для Windows, её можно <a href="https://curl.haxx.se/windows/">скачать с официального сайта</a>.
+Устанавливаем с параметрами по умолчанию.</p>
+<p>Создадим новую задачу:</p>
+<p><img src="/images/windows-scheduler/create-task.png" alt="Создание новой задачи в планировщике задач Windows" title="Создание новой задачи в планировщике задач Windows" /></p>
+<p>Указываем название задачи. Например, резервное копирование документов:</p>
+<p><img src="/images/windows-scheduler/create-task-step1.png" alt="Указываем заголовок для задачи" title="Указываем заголовок для задачи" /></p>
+<p>Нажимаем &quot;Далее &gt;&quot;:</p>
+<p>Выбираем когда будет стартовать задача. Например, ежедневно:</p>
+<p><img src="/images/windows-scheduler/create-task-step2.png" alt="Указываем когда будет стартовать задача" title="Указываем когда будет стартовать задача" /></p>
+<p>Указываем время для старта задачи. Например, 20:00.</p>
+<p><img src="/images/windows-scheduler/create-task-step3.png" alt="Указываем время для старта задачи" title="Указываем время для старта задачи" /></p>
+<p>Указываем действие - &quot;Запустить программу&quot;:</p>
+<p><img src="/images/windows-scheduler/create-task-step4.png" alt="Выбираем действие 'Запустить программу'" title="Выбираем действие 'Запустить программу'" /></p>
+<p>Указываем команду, полная команда будет подобным образом:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">c:\backups\start.cmd &amp;&amp; curl -fsS --retry 3 https://cronbox.ru/ping/39879ead-7a97-455f-9c95-4dbf08d16140</span><span style="color:#c0c5ce;">
-</span></pre><h4 id="3-sokhraniaem-izmeneniia">3. Сохраняем изменения</h4>
-<p>Нажимаем ОК. Задача подключена к монитору. Теперь, если задача выполнится успешно, запрос будет отправлен к монитору в Cronbox.</p>
+<span style="color:#c0c5ce;">c:\scripts\backup-docs.cmd &amp;&amp; curl -fS --retry https://cronbox.ru/ping/39809ead-7e37-455f-ac95-adbf08d86140</span><span style="color:#c0c5ce;">
+</span></pre>
+<p><img src="/images/windows-scheduler/create-task-step5.png" alt="Выбираем действие 'Запустить программу'" title="Выбираем действие 'Запустить программу'" /></p>
+<p>Приложение покажет диалоговое окно, в котором нужно нажать &quot;Нет&quot; и тем самым сохранить нашу команду целиком:</p>
+<p><img src="/images/windows-scheduler/create-task-step6.png" alt="Отказываемся от изменений в команде" title="Отказываемся от изменений в команде" /></p>
+<p><img src="/images/windows-scheduler/create-task-step7.png" alt="Завершающий шаг создания задачи" title="Завершающий шаг создания задачи" /></p>
+<p>Жмём &quot;Готово&quot;. Задача будет сохранена и откроется вновь.</p>
+<p>Необходимо указать чтобы задача запускалась для всех пользователей операционной системы, 
+независимо от того какой пользователь активен в данный момент.</p>
+<p><img src="/images/windows-scheduler/create-task-step8.png" alt="Завершающий шаг создания задачи" title="Завершающий шаг создания задачи" /></p>
+<p>Отмечаем пункт &quot;Выполнять для всех пользователей&quot; и жмём &quot;ОК&quot;.</p>
+<h3 id="itog">Итог</h3>
+<p>После создания задачи в планировщике Windows операционная система будет запускать ваш скрипт каждый день ровно в 20:00.
+Если скрипт отработает успешно, будет запущен curl, который пошлёт отклик в Cronbox. Если скрипт не запустится или
+выполнится с ошибкой, то уведомление через curl не будет отправлено в сервис. 
+Cronbox отправит уведомление о том выполнилась задача по расписанию или нет.</p>
+<h2 id="drugie-stat-i">Другие статьи</h2>
+<ol>
+<li>
+<p><a href="https://docs.cronbox.ru/how-to-ping/">Как мониторить cron задачи в Linux</a></p>
+</li>
+<li>
+<p><a href="https://docs.cronbox.ru/integrations/">Как настроить уведомления через E-mail и Telegram</a></p>
+</li>
+</ol>
 
   
 </section>
