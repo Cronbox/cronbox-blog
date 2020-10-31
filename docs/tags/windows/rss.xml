@@ -9,10 +9,21 @@
         <generator>Zola</generator>
         <language>ru</language>
         <atom:link href="https:&#x2F;&#x2F;blog.cronbox.ru/rss.xml" rel="self" type="application/rss+xml"/>
-        <lastBuildDate>2020-06-23</lastBuildDate>
+        <lastBuildDate>2020-10-31</lastBuildDate>
 
         
 
+        
+        <item
+            
+            >
+            <title>Как отправлять HTTP-запросы в Windows</title>
+            <pubDate>2020-10-31</pubDate>
+            <link>https:&#x2F;&#x2F;blog.cronbox.ru/kak-otpravlat-http-zaprosy-iz-windows</link>
+            <guid>https:&#x2F;&#x2F;blog.cronbox.ru/kak-otpravlat-http-zaprosy-iz-windows</guid>
+            <description>Утилиты для отправки HTTP-запросов в Windows</description>
+            
+        </item>
         
         <item
             

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- SEO -->
+  
+<title>Как отправлять HTTP-запросы в Windows | Блог Cronbox</title>
+
+
+  
+<meta name="Description" content="Утилиты для отправки HTTP-запросов в Windows">
+
+
+  
+  <meta name="keywords" content="мониторинг задач, мониторинг cron, мониторинг резервного копирования, мониторинг бэкапов, cron">
+  
+
+  
+  <meta property="og:url" content="https:&#x2F;&#x2F;blog.cronbox.ru" />
+  
+
+  
+  <meta property="og:title" content="Блог Cronbox" />
+  
+
+  
+<meta property="og:description" content="Утилиты для отправки HTTP-запросов в Windows"/>
+
+
+  
+  <meta property="og:type" content="blog" />
+  
+
+  
+
+  <link rel="icon" type="image&#x2F;vnd.microsoft.icon" href="/favicon.ico">
+
+  
+    
+        <!-- Yandex.Webmaster Verification Code -->
+        <meta name="yandex-verification" content="7e31b2e5536fb5d8" />
+    
+
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <!--  css -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+
+  <!-- theme -->
+  <link rel="stylesheet" href="https:&#x2F;&#x2F;blog.cronbox.ru/tinyblog.css">
+
+  
+</head>
+
+<body>
+
+<nav id="overlord" class="overlord">
+  
+<div id="logo" class="p-4">
+    <a href="https:&#x2F;&#x2F;blog.cronbox.ru" title="Вернуться на главную страницу">
+        &lsaquo; Назад
+    </a>
+</div>
+
+</nav>
+
+<section class="container">
+  
+  <h1 class="page-title mt-0">
+    Как отправлять HTTP-запросы в Windows
+  </h1>
+  
+<div class="frontmatter font-weight-bold">
+    <div class="d-inline-block">
+        <time class="article_time" datetime="2020-10-31">October 31, 2020</time>.
+    </div>
+
+    <div class="d-inline-block article_time"> Время чтения &mdash; 2 мин.</div>
+</div>
+
+
+  <div class="mb-3 mt-3">
+    
+      <a class="btn btn-tiny btn-light" href="/tags/http/" title="Посмотреть все посты с тэгом 'http'">http</a>
+    
+      <a class="btn btn-tiny btn-light" href="/tags/windows/" title="Посмотреть все посты с тэгом 'windows'">windows</a>
+    
+      <a class="btn btn-tiny btn-light" href="/tags/curl/" title="Посмотреть все посты с тэгом 'curl'">curl</a>
+    
+      <a class="btn btn-tiny btn-light" href="/tags/scoop/" title="Посмотреть все посты с тэгом 'scoop'">scoop</a>
+    
+  </div>
+
+  <p><img src="/images/http-from-windows/requests.png" alt="HTTP-запросы из Windows" title="HTTP-запросы из Windows" /></p>
+<p>При разработке программного обеспечения и 
+при <a href="/kak-monitorit-zadazhi-v-windows/">мониторинге серверов</a> порой 
+необходимо отправлять HTTP-запросы. Самые популярные из них это: <code>POST</code> и <code>GET</code>.</p>
+<p>В мире Linux/Unix/MacOS чаще всего используют утилиту <code>curl</code>, которая устанавливается одной командой. 
+В Windows вы также можете установить curl.</p>
+<h2 id="sposob-1-ustanovka-cherez-menedzher-paketov">Способ №1 — Установка через менеджер пакетов</h2>
+<p>Самый простой и быстрый вариант — установить через менеджер пакетов <a href="https://scoop.sh/">scoop</a>:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">scoop install curl</span><span style="color:#c0c5ce;">
+</span></pre><h2 id="sposob-2-ustanovka-s-ofitsial-nogo-saita">Способ №2 — Установка с официального сайта</h2>
+<ol>
+<li>
+<p>Скачиваем архив с официального сайта <a href="https://curl.haxx.se/windows/">https://curl.haxx.se/windows/</a> архив.</p>
+</li>
+<li>
+<p>Распаковываем куда-нибудь. Например, <code>c:\apps\curl</code>. Содержимое каталога должно выглядеть подобным образом:<br />
+<img src="/images/http-from-windows/curl-directory.png" alt="Содержимое директории curl" title="Содержимое директории curl" /></p>
+</li>
+<li>
+<p>Добавляем путь <code>c:\apps\curl\bin</code> в переменную окружения <code>PATH</code>:</p>
+<ol>
+<li>Открываем панель системных свойств:
+ПУСК -&gt; Пишем &quot;Перемен&quot; или &quot;Var&quot; (для английской версии):<br />
+<img src="/images/http-from-windows/start-env-vars.png" alt="Как открыть редактор переменных окружения" title="Как открыть редактор переменных окружения" /></li>
+<li>Переходим в раздел работы с переменными окружения:
+<img src="/images/http-from-windows/vars-editor1.png" alt="Открываем раздел с переменными окружения" title="Открываем раздел с переменными окружения" /></li>
+<li>Находим в списке переменных окружения для пользователя переменную PATH и редактируем:
+<img src="/images/http-from-windows/vars-editor2.png" alt="Редактируем переменную PATH" title="Редактируем переменную PATH" /></li>
+<li>Добавляем новое значение <code>c:\apps\curl\bin</code>:
+<img src="/images/http-from-windows/vars-editor3.png" alt="Добавляем путь c:\apps\curl\bin" title="Добавляем путь c:\apps\curl\bin" /></li>
+<li>Далее нажимаем кнопки ОК пока не закроются все окна.</li>
+</ol>
+</li>
+</ol>
+<p>Теперь если открыть командную строку вновь, то будет доступна команда curl:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">C:\apps&gt;curl</span><span style="color:#c0c5ce;">
+curl: try &#39;curl --help&#39; for more information</span><span style="color:#c0c5ce;">
+</span></pre>
+  
+</section>
+
+ 
+
+<footer class="mt-5 mb-5">
+  <div class="text-tiniest mt-5">
+    <a href="https://github.com/tinyops-ru/tinyblog-zola-theme" target="_blank">TINYBLOG THEME</a>
+  </div>
+</footer>
+
+
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(64400824, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+    });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/64400824"
+                    style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+
+</body>
+</html>
