@@ -11,7 +11,7 @@ categories = ["windows", "network"]
 ![HTTP-запросы из Windows](/images/http-from-windows/requests.png "HTTP-запросы из Windows")  
   
 При разработке программного обеспечения и 
-при [мониторинге серверов](https://blog.cronbox.ru/kak-monitorit-zadazhi-v-windows/) порой 
+при [мониторинге серверов](/kak-monitorit-zadazhi-v-windows/) порой 
 необходимо отправлять HTTP-запросы. Самые популярные из них это: `POST` и `GET`.
 
 В мире Linux/Unix/MacOS чаще всего используют утилиту `curl`, которая устанавливается одной командой. 
