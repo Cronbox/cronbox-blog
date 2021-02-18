@@ -68,7 +68,9 @@
   
 <div id="logo" class="p-4">
     <a href="https:&#x2F;&#x2F;blog.cronbox.ru" title="Вернуться на главную страницу">
-        &lsaquo; Назад
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 25 25">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+        </svg>
     </a>
 </div>
 
@@ -91,9 +93,9 @@
 
   <div class="mb-3 mt-3">
     
-      <a class="btn btn-tiny btn-light" href="/tags/scheduler/" title="Посмотреть все посты с тэгом 'scheduler'">scheduler</a>
+      <a class="font-weight-bold text-secondary mr-1" href="/tags/scheduler/" title="Посмотреть все посты с тэгом 'scheduler'">#scheduler</a>
     
-      <a class="btn btn-tiny btn-light" href="/tags/windows/" title="Посмотреть все посты с тэгом 'windows'">windows</a>
+      <a class="font-weight-bold text-secondary mr-1" href="/tags/windows/" title="Посмотреть все посты с тэгом 'windows'">#windows</a>
     
   </div>
 
@@ -140,8 +142,8 @@
 <p><img src="/images/windows-scheduler/create-task-step4.png" alt="Выбираем действие 'Запустить программу'" title="Выбираем действие 'Запустить программу'" /></p>
 <p>Указываем команду, полная команда будет подобным образом:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">c:\scripts\backup-docs.cmd &amp;&amp; curl -fS --retry https://cronbox.ru/ping/39809ead-7e37-455f-ac95-adbf08d86140</span><span style="color:#c0c5ce;">
-</span></pre>
+<code><span style="color:#c0c5ce;">c:\scripts\backup-docs.cmd &amp;&amp; curl -fS --retry https://cronbox.ru/ping/39809ead-7e37-455f-ac95-adbf08d86140
+</span></code></pre>
 <p><img src="/images/windows-scheduler/create-task-step5.png" alt="Выбираем действие 'Запустить программу'" title="Выбираем действие 'Запустить программу'" /></p>
 <p>Приложение покажет диалоговое окно, в котором нужно нажать &quot;Нет&quot; и тем самым сохранить нашу команду целиком:</p>
 <p><img src="/images/windows-scheduler/create-task-step6.png" alt="Отказываемся от изменений в команде" title="Отказываемся от изменений в команде" /></p>

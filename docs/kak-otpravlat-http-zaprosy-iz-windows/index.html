@@ -68,7 +68,9 @@
   
 <div id="logo" class="p-4">
     <a href="https:&#x2F;&#x2F;blog.cronbox.ru" title="Вернуться на главную страницу">
-        &lsaquo; Назад
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 25 25">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+        </svg>
     </a>
 </div>
 
@@ -91,13 +93,13 @@
 
   <div class="mb-3 mt-3">
     
-      <a class="btn btn-tiny btn-light" href="/tags/http/" title="Посмотреть все посты с тэгом 'http'">http</a>
+      <a class="font-weight-bold text-secondary mr-1" href="/tags/http/" title="Посмотреть все посты с тэгом 'http'">#http</a>
     
-      <a class="btn btn-tiny btn-light" href="/tags/windows/" title="Посмотреть все посты с тэгом 'windows'">windows</a>
+      <a class="font-weight-bold text-secondary mr-1" href="/tags/windows/" title="Посмотреть все посты с тэгом 'windows'">#windows</a>
     
-      <a class="btn btn-tiny btn-light" href="/tags/curl/" title="Посмотреть все посты с тэгом 'curl'">curl</a>
+      <a class="font-weight-bold text-secondary mr-1" href="/tags/curl/" title="Посмотреть все посты с тэгом 'curl'">#curl</a>
     
-      <a class="btn btn-tiny btn-light" href="/tags/scoop/" title="Посмотреть все посты с тэгом 'scoop'">scoop</a>
+      <a class="font-weight-bold text-secondary mr-1" href="/tags/scoop/" title="Посмотреть все посты с тэгом 'scoop'">#scoop</a>
     
   </div>
 
@@ -110,8 +112,8 @@
 <h2 id="sposob-1-ustanovka-cherez-menedzher-paketov">Способ №1 — Установка через менеджер пакетов</h2>
 <p>Самый простой и быстрый вариант — установить через менеджер пакетов <a href="https://scoop.sh/">scoop</a>:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">scoop install curl</span><span style="color:#c0c5ce;">
-</span></pre><h2 id="sposob-2-ustanovka-s-ofitsial-nogo-saita">Способ №2 — Установка с официального сайта</h2>
+<code class="language-shell script" data-lang="shell script"><span style="color:#c0c5ce;">scoop install curl
+</span></code></pre><h2 id="sposob-2-ustanovka-s-ofitsial-nogo-saita">Способ №2 — Установка с официального сайта</h2>
 <ol>
 <li>
 <p>Скачиваем архив с официального сайта <a href="https://curl.haxx.se/windows/">https://curl.haxx.se/windows/</a> архив.</p>
@@ -138,9 +140,9 @@
 </ol>
 <p>Теперь если открыть командную строку вновь, то будет доступна команда curl:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">C:\apps&gt;curl</span><span style="color:#c0c5ce;">
-curl: try &#39;curl --help&#39; for more information</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-shell script" data-lang="shell script"><span style="color:#c0c5ce;">C:\apps&gt;curl
+curl: try &#39;curl --help&#39; for more information
+</span></code></pre>
   
 </section>
 
