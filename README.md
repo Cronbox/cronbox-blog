@@ -2,6 +2,12 @@
 
 [https://blog.cronbox.ru](https://blog.cronbox.ru)
 
+### С чего начать
+
+```shell
+git clone https://github.com/tinyops-ru/tinyblog-zola-theme.git themes/tinyblog
+```
+
 ### Как собрать проект
 
 ```shell script
