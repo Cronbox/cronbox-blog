@@ -2,95 +2,92 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://blog.cronbox.ru/</loc>
-        <lastmod>2021-02-18</lastmod>
+        <lastmod>2021-03-29</lastmod>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/categories/</loc>
-        <lastmod>2021-02-18</lastmod>
+    </url>
+    <url>
+        <loc>https://blog.cronbox.ru/categories/backup/</loc>
+    </url>
+    <url>
+        <loc>https://blog.cronbox.ru/categories/backup/page/1/</loc>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/categories/cron/</loc>
-        <lastmod>2021-02-18</lastmod>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/categories/cron/page/1/</loc>
-        <lastmod>2021-02-18</lastmod>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/categories/meta/</loc>
-        <lastmod>2021-02-18</lastmod>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/categories/meta/page/1/</loc>
-        <lastmod>2021-02-18</lastmod>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/categories/monitoring/</loc>
-        <lastmod>2021-02-18</lastmod>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/categories/monitoring/page/1/</loc>
-        <lastmod>2021-02-18</lastmod>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/categories/network/</loc>
-        <lastmod>2021-02-18</lastmod>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/categories/network/page/1/</loc>
-        <lastmod>2021-02-18</lastmod>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/categories/tutorial/</loc>
-        <lastmod>2021-02-18</lastmod>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/categories/tutorial/page/1/</loc>
-        <lastmod>2021-02-18</lastmod>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/categories/windows/</loc>
-        <lastmod>2021-02-18</lastmod>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/categories/windows/page/1/</loc>
-        <lastmod>2021-02-18</lastmod>
+    </url>
+    <url>
+        <loc>https://blog.cronbox.ru/kak-monitorit-borg-backup/</loc>
+        <lastmod>2021-03-29</lastmod>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/kak-monitorit-zadazhi-v-windows/</loc>
-        <lastmod>2021-02-18</lastmod>
+        <lastmod>2020-10-28</lastmod>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/kak-otpravlat-http-zaprosy-iz-windows/</loc>
-        <lastmod>2021-02-18</lastmod>
+        <lastmod>2020-10-31</lastmod>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/page/1/</loc>
-        <lastmod>2021-02-18</lastmod>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/planirovschik-zadanii-cron/</loc>
-        <lastmod>2021-02-18</lastmod>
+        <lastmod>2021-02-28</lastmod>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/tags/</loc>
-        <lastmod>2021-02-18</lastmod>
+    </url>
+    <url>
+        <loc>https://blog.cronbox.ru/tags/backup/</loc>
+    </url>
+    <url>
+        <loc>https://blog.cronbox.ru/tags/borg/</loc>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/tags/cron/</loc>
-        <lastmod>2021-02-18</lastmod>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/tags/curl/</loc>
-        <lastmod>2021-02-18</lastmod>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/tags/http/</loc>
-        <lastmod>2021-02-18</lastmod>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/tags/monitoring/</loc>
-        <lastmod>2021-02-18</lastmod>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/tags/scheduler/</loc>
@@ -106,6 +103,6 @@
     </url>
     <url>
         <loc>https://blog.cronbox.ru/zachem-nuzhen-monitoring/</loc>
-        <lastmod>2021-02-18</lastmod>
+        <lastmod>2020-05-27</lastmod>
     </url>
 </urlset>
