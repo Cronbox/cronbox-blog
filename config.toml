@@ -8,14 +8,15 @@ build_search_index = true
 
 theme = "tinyblog"
 
-generate_rss = true
+generate_feed = true
+feed_limit = 100
 
 title = "Блог Cronbox"
 description = "О мониторинге, cron и технологиях"
 
 taxonomies = [
- {name = "tags", rss = true},
- {name = "categories", paginate_by = 5, rss = true},
+ {name = "tags"},
+ {name = "categories", paginate_by = 5},
  {name = "authors"}
 ]
 
