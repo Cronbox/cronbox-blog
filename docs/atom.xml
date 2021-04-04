@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Блог Cronbox</title>
+	<subtitle>О мониторинге, cron и технологиях</subtitle>
+	<link href="https://blog.cronbox.ru/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://blog.cronbox.ru"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2021-03-29T00:00:00+00:00</updated>
+	<id>https://blog.cronbox.ru/atom.xml</id>
+	<entry xml:lang="en">
+		<title>Как настроить мониторинг для Borg Backup</title>
+		<published>2021-03-29T00:00:00+00:00</published>
+		<updated>2021-03-29T00:00:00+00:00</updated>
+		<link href="https://blog.cronbox.ru/kak-monitorit-borg-backup/" type="text/html"/>
+		<id>https://blog.cronbox.ru/kak-monitorit-borg-backup/</id>
+		<content type="html">&lt;p&gt;Borg — это отличный инструмент для организации резервного копирования в Linux. Мы несколько лет используем его в production.&lt;br &#x2F;&gt;
+Более подробно про Borg в &lt;a href=&quot;https:&#x2F;&#x2F;b.tinyops.ru&#x2F;linux-backup-with-borg&#x2F;&quot;&gt;отдельной статье&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Допустим резервное копирование настроено, запускается из &lt;a href=&quot;&#x2F;planirovschik-zadanii-cron&#x2F;&quot;&gt;планировщика cron&lt;&#x2F;a&gt; каждый день, в час ночи.
+Для обеспечения надежности &lt;a href=&quot;&#x2F;zachem-nuzhen-monitoring&#x2F;&quot;&gt;необходим мониторинг&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Несмотря на то, что cron проверен десятилетиями и зарекомендовал себя как надёжное приложение, на его работу могут повлиять
+внешние факторы:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Обновления операционной системы;&lt;&#x2F;li&gt;
+&lt;li&gt;Работа других приложений;&lt;&#x2F;li&gt;
+&lt;li&gt;Сетевой ресурс для резервных копий более недоступен;&lt;&#x2F;li&gt;
+&lt;li&gt;Закончилось место на жёстком диске;&lt;&#x2F;li&gt;
+&lt;li&gt;Ошибки администратора (человеческий фактор).&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;В таких случаях поможет &lt;a href=&quot;https:&#x2F;&#x2F;cp.cronbox.ru&quot;&gt;мониторинг cron-задач&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;nastroika&quot;&gt;Настройка&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;sozdanie-monitora&quot;&gt;Создание монитора&lt;&#x2F;h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;cp.cronbox.ru&quot;&gt;Заходим&lt;&#x2F;a&gt; под своей учётной записью в Cronbox&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Добавляем новый монитор для cron-задачи:&lt;br &#x2F;&gt;
+&lt;img src=&quot;&#x2F;images&#x2F;backup-borg&#x2F;borg-backup__add-monitor.png&quot; alt=&quot;Добавление нового cron-монитора&quot; title=&quot;Добавление нового cron-монитора&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Указываем название монитора, расписание, идентичное тому по которому запускается borg:&lt;br &#x2F;&gt;
+&lt;img src=&quot;&#x2F;images&#x2F;backup-borg&#x2F;borg-backup__new-monitor-form.png&quot; alt=&quot;Форма создания нового монитора&quot; title=&quot;Форма создания нового монитора&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Настраиваем условия уведомлений и каналы по которым сервис уведомит нас о задаче:&lt;br &#x2F;&gt;
+&lt;img src=&quot;&#x2F;images&#x2F;backup-borg&#x2F;borg-backup__notifications.png&quot; alt=&quot;Условия и каналы уведомлений&quot; title=&quot;Условия и каналы уведомлений&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Нажимаем &amp;quot;Сохранить&amp;quot;.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h3 id=&quot;integratsiia-monitora-s-zadachei-v-cron&quot;&gt;Интеграция монитора с задачей в cron&lt;&#x2F;h3&gt;
+&lt;p&gt;Монитор создан. Заходим на страницу монитора, во кладку &amp;quot;Интеграция&amp;quot;. Копируем оттуда уникальную ссылку:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;backup-borg&#x2F;borg-backup__integration.png&quot; alt=&quot;Интеграция монитора и задачи&quot; title=&quot;Интеграция монитора и задачи&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Например, &lt;code&gt;https:&#x2F;&#x2F;p.cronbox.ru&#x2F;p&#x2F;3cbaaeb7-5ef2-4a74-8342-528e5f56e6e3&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;На вашем сервере добавляем вызов ссылки после вызова &lt;code&gt;borg&lt;&#x2F;code&gt;. Например, вот так:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;0 3 * * * &#x2F;root&#x2F;scripts&#x2F;borg-backup.sh &amp;amp;&amp;amp; curl https:&#x2F;&#x2F;p.cronbox.ru&#x2F;p&#x2F;3cbaaeb7-5ef2-4a74-8342-528e5f56e6e3
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;В &lt;code&gt;03:00&lt;&#x2F;code&gt; на вашем сервере будет запущен скрипт &lt;code&gt;&#x2F;root&#x2F;scripts&#x2F;borg-backup.sh&lt;&#x2F;code&gt;. Если скрипт отработает без ошибок, то
+следующей командой будет запущена утилита curl, которая выполнит запрос к уникальной ссылке монитора.&lt;&#x2F;p&gt;
+&lt;p&gt;Сервис будет следить чтобы отклик от cron-задачи пришёл вовремя, в противном случае — напишет по почте и&#x2F;или в Telegram.&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Как отправлять HTTP-запросы в Windows</title>
+		<published>2020-10-31T00:00:00+00:00</published>
+		<updated>2020-10-31T00:00:00+00:00</updated>
+		<link href="https://blog.cronbox.ru/kak-otpravlat-http-zaprosy-iz-windows/" type="text/html"/>
+		<id>https://blog.cronbox.ru/kak-otpravlat-http-zaprosy-iz-windows/</id>
+		<content type="html">&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;http-from-windows&#x2F;requests.png&quot; alt=&quot;HTTP-запросы из Windows&quot; title=&quot;HTTP-запросы из Windows&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;При разработке программного обеспечения и 
+при &lt;a href=&quot;&#x2F;kak-monitorit-zadazhi-v-windows&#x2F;&quot;&gt;мониторинге серверов&lt;&#x2F;a&gt; порой 
+необходимо отправлять HTTP-запросы. Самые популярные из них это: &lt;code&gt;POST&lt;&#x2F;code&gt; и &lt;code&gt;GET&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;В мире Linux&#x2F;Unix&#x2F;MacOS чаще всего используют утилиту &lt;code&gt;curl&lt;&#x2F;code&gt;, которая устанавливается одной командой. 
+В Windows вы также можете установить curl.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;sposob-1-ustanovka-cherez-menedzher-paketov&quot;&gt;Способ №1 — Установка через менеджер пакетов&lt;&#x2F;h2&gt;
+&lt;p&gt;Самый простой и быстрый вариант — установить через менеджер пакетов &lt;a href=&quot;https:&#x2F;&#x2F;scoop.sh&#x2F;&quot;&gt;scoop&lt;&#x2F;a&gt;:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-shell script&quot; data-lang=&quot;shell script&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;scoop install curl
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;sposob-2-ustanovka-s-ofitsial-nogo-saita&quot;&gt;Способ №2 — Установка с официального сайта&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Скачиваем архив с официального сайта &lt;a href=&quot;https:&#x2F;&#x2F;curl.haxx.se&#x2F;windows&#x2F;&quot;&gt;https:&#x2F;&#x2F;curl.haxx.se&#x2F;windows&#x2F;&lt;&#x2F;a&gt; архив.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Распаковываем куда-нибудь. Например, &lt;code&gt;c:\apps\curl&lt;&#x2F;code&gt;. Содержимое каталога должно выглядеть подобным образом:&lt;br &#x2F;&gt;
+&lt;img src=&quot;&#x2F;images&#x2F;http-from-windows&#x2F;curl-directory.png&quot; alt=&quot;Содержимое директории curl&quot; title=&quot;Содержимое директории curl&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Добавляем путь &lt;code&gt;c:\apps\curl\bin&lt;&#x2F;code&gt; в переменную окружения &lt;code&gt;PATH&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Открываем панель системных свойств:
+ПУСК -&amp;gt; Пишем &amp;quot;Перемен&amp;quot; или &amp;quot;Var&amp;quot; (для английской версии):&lt;br &#x2F;&gt;
+&lt;img src=&quot;&#x2F;images&#x2F;http-from-windows&#x2F;start-env-vars.png&quot; alt=&quot;Как открыть редактор переменных окружения&quot; title=&quot;Как открыть редактор переменных окружения&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Переходим в раздел работы с переменными окружения:
+&lt;img src=&quot;&#x2F;images&#x2F;http-from-windows&#x2F;vars-editor1.png&quot; alt=&quot;Открываем раздел с переменными окружения&quot; title=&quot;Открываем раздел с переменными окружения&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Находим в списке переменных окружения для пользователя переменную PATH и редактируем:
+&lt;img src=&quot;&#x2F;images&#x2F;http-from-windows&#x2F;vars-editor2.png&quot; alt=&quot;Редактируем переменную PATH&quot; title=&quot;Редактируем переменную PATH&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Добавляем новое значение &lt;code&gt;c:\apps\curl\bin&lt;&#x2F;code&gt;:
+&lt;img src=&quot;&#x2F;images&#x2F;http-from-windows&#x2F;vars-editor3.png&quot; alt=&quot;Добавляем путь c:\apps\curl\bin&quot; title=&quot;Добавляем путь c:\apps\curl\bin&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Далее нажимаем кнопки ОК пока не закроются все окна.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;Теперь если открыть командную строку вновь, то будет доступна команда curl:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-shell script&quot; data-lang=&quot;shell script&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;C:\apps&amp;gt;curl
+curl: try &amp;#39;curl --help&amp;#39; for more information
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Как мониторить задачи из планировщика Windows</title>
+		<published>2020-06-23T00:00:00+00:00</published>
+		<updated>2020-10-28T00:00:00+00:00</updated>
+		<link href="https://blog.cronbox.ru/kak-monitorit-zadazhi-v-windows/" type="text/html"/>
+		<id>https://blog.cronbox.ru/kak-monitorit-zadazhi-v-windows/</id>
+		<content type="html">&lt;p&gt;Несмотря на то что наш проект называется &lt;a href=&quot;https:&#x2F;&#x2F;cronbox.ru&quot;&gt;Cronbox&lt;&#x2F;a&gt; и 
+первоначально он был создан для мониторинга cron-задач в Linux, вы можете пользоваться сервисом и для Windows-серверов.&lt;&#x2F;p&gt;
+&lt;p&gt;Планировщик задач для Windows умеет делать всё то же, что и &lt;code&gt;cron&lt;&#x2F;code&gt;, и даже имеет дополнительные возможности. Например, поддерживает часовые
+пояса.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;1-sozdaiom-monitor-i-poluchaem-ssylku&quot;&gt;1. Создаём монитор и получаем ссылку&lt;&#x2F;h4&gt;
+&lt;p&gt;После &lt;a href=&quot;https:&#x2F;&#x2F;docs.cronbox.ru&#x2F;getting-started&#x2F;&quot;&gt;создания монитора&lt;&#x2F;a&gt; формируется уникальная ссылка:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;windows-scheduler&#x2F;monitor-page-url.png&quot; alt=&quot;Страница монитора&quot; title=&quot;Страница монитора&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Копируем её в блокнот, она ещё пригодится.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;2-otkryvaem-planirovshchik-zadach&quot;&gt;2. Открываем планировщик задач&lt;&#x2F;h4&gt;
+&lt;details&gt;
+    &lt;summary&gt;Для Windows 10&lt;&#x2F;summary&gt;
+    &lt;p&gt;
+        Пуск &gt; пишем &quot;Планиро&quot; и операционная система предложит нам Планировщик заданий.
+        &lt;img src=&quot;&#x2F;images&#x2F;windows-scheduler&#x2F;open-windows-scheduler.png&quot;
+             title=&quot;Как запустить планировщик задач Windows&quot;&#x2F;&gt;            
+    &lt;&#x2F;p&gt;
+&lt;&#x2F;details&gt;
+&lt;details&gt;
+    &lt;summary&gt;Для предыдущих версий Windows&lt;&#x2F;summary&gt;
+    &lt;p&gt;
+        Пуск &gt; Выполнить &gt; taskschd            
+    &lt;&#x2F;p&gt;
+&lt;&#x2F;details&gt;
+&lt;p&gt;Откроется приложение планировщика:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;windows-scheduler&#x2F;windows-scheduler.png&quot; alt=&quot;Планировщик задач Windows&quot; title=&quot;Планировщик задач Windows&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Для примера интегрируем задачу резервного копирования с Cronbox.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;3-sozdaiom-zadachu&quot;&gt;3. Создаём задачу&lt;&#x2F;h4&gt;
+&lt;p&gt;Настроим отправку HTTP-запроса к монитору после завершения выполнения задачи. 
+Для отправки используем утилиту &lt;code&gt;curl&lt;&#x2F;code&gt; (&lt;a href=&quot;&#x2F;kak-otpravlat-http-zaprosy-iz-windows&#x2F;&quot;&gt;как установить curl для Windows&lt;&#x2F;a&gt;).
+Устанавливаем с параметрами по умолчанию.&lt;&#x2F;p&gt;
+&lt;p&gt;Создадим новую задачу:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;windows-scheduler&#x2F;create-task.png&quot; alt=&quot;Создание новой задачи в планировщике задач Windows&quot; title=&quot;Создание новой задачи в планировщике задач Windows&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Указываем название задачи. Например, резервное копирование документов:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;windows-scheduler&#x2F;create-task-step1.png&quot; alt=&quot;Указываем заголовок для задачи&quot; title=&quot;Указываем заголовок для задачи&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Нажимаем &amp;quot;Далее &amp;gt;&amp;quot;:&lt;&#x2F;p&gt;
+&lt;p&gt;Выбираем когда будет стартовать задача. Например, ежедневно:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;windows-scheduler&#x2F;create-task-step2.png&quot; alt=&quot;Указываем когда будет стартовать задача&quot; title=&quot;Указываем когда будет стартовать задача&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Указываем время для старта задачи. Например, 20:00.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;windows-scheduler&#x2F;create-task-step3.png&quot; alt=&quot;Указываем время для старта задачи&quot; title=&quot;Указываем время для старта задачи&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Указываем действие - &amp;quot;Запустить программу&amp;quot;:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;windows-scheduler&#x2F;create-task-step4.png&quot; alt=&quot;Выбираем действие &#x27;Запустить программу&#x27;&quot; title=&quot;Выбираем действие &#x27;Запустить программу&#x27;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Указываем команду, полная команда будет подобным образом:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;c:\scripts\backup-docs.cmd &amp;amp;&amp;amp; curl -fS --retry https:&#x2F;&#x2F;cronbox.ru&#x2F;ping&#x2F;39809ead-7e37-455f-ac95-adbf08d86140
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;windows-scheduler&#x2F;create-task-step5.png&quot; alt=&quot;Выбираем действие &#x27;Запустить программу&#x27;&quot; title=&quot;Выбираем действие &#x27;Запустить программу&#x27;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Приложение покажет диалоговое окно, в котором нужно нажать &amp;quot;Нет&amp;quot; и тем самым сохранить нашу команду целиком:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;windows-scheduler&#x2F;create-task-step6.png&quot; alt=&quot;Отказываемся от изменений в команде&quot; title=&quot;Отказываемся от изменений в команде&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;windows-scheduler&#x2F;create-task-step7.png&quot; alt=&quot;Завершающий шаг создания задачи&quot; title=&quot;Завершающий шаг создания задачи&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Жмём &amp;quot;Готово&amp;quot;. Задача будет сохранена и откроется вновь.&lt;&#x2F;p&gt;
+&lt;p&gt;Необходимо указать чтобы задача запускалась для всех пользователей операционной системы, 
+независимо от того какой пользователь активен в данный момент.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;windows-scheduler&#x2F;create-task-step8.png&quot; alt=&quot;Завершающий шаг создания задачи&quot; title=&quot;Завершающий шаг создания задачи&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Отмечаем пункт &amp;quot;Выполнять для всех пользователей&amp;quot; и жмём &amp;quot;ОК&amp;quot;.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;itog&quot;&gt;Итог&lt;&#x2F;h3&gt;
+&lt;p&gt;После создания задачи в планировщике Windows операционная система будет запускать ваш скрипт каждый день ровно в 20:00.
+Если скрипт отработает успешно, будет запущен curl, который пошлёт отклик в Cronbox. Если скрипт не запустится или
+выполнится с ошибкой, то уведомление через curl не будет отправлено в сервис. 
+Cronbox отправит уведомление о том выполнилась задача по расписанию или нет.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;drugie-stat-i&quot;&gt;Другие статьи&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;docs.cronbox.ru&#x2F;how-to-ping&#x2F;&quot;&gt;Как мониторить cron задачи в Linux&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;docs.cronbox.ru&#x2F;integrations&#x2F;&quot;&gt;Как настроить уведомления через E-mail и Telegram&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Зачем нужен мониторинг</title>
+		<published>2020-05-27T00:00:00+00:00</published>
+		<updated>2020-05-27T00:00:00+00:00</updated>
+		<link href="https://blog.cronbox.ru/zachem-nuzhen-monitoring/" type="text/html"/>
+		<id>https://blog.cronbox.ru/zachem-nuzhen-monitoring/</id>
+		<content type="html">&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;why-monitoring.png&quot; alt=&quot;alt text&quot; title=&quot;(c) Stephen Dawson&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Мониторинг — это процесс наблюдения за системой. Система имеет определённое внутреннее состояние и 
+периодически взаимодействует с внешним миром. &lt;&#x2F;p&gt;
+&lt;p&gt;Системой может быть сайт, интернет-магазин или любое другое приложение.
+Для интернет-магазина внутреннее состояние системы — это заказы, товары, данные об оплате, а взаимодействие 
+с внешним миром — обработка платежей через банки (эквайринг).&lt;&#x2F;p&gt;
+&lt;p&gt;Процесс мониторинга может быть ручным, полу- или полностью автоматическим:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;ручной — открываем сайт и видим, что он успешно загрузился; &lt;&#x2F;li&gt;
+&lt;li&gt;полуавтоматический — смотрим на градусник и принимаем решение, какую одежду надеть;&lt;&#x2F;li&gt;
+&lt;li&gt;автоматический — система уведомляет нас о сбоях или авариях.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;avtomaticheskii-monitoring-neobkhodim-dlia-proektov-liubogo-razmera&quot;&gt;Автоматический мониторинг необходим для проектов любого размера&lt;&#x2F;h3&gt;
+&lt;p&gt;Для примера возьмём некий интернет-магазин, который продаёт детские игрушки. 
+Заказы принимаются через сайт, круглосуточно. Операторы обрабатывают заявки с 9:00 до 17:00, каждый день. 
+Вечером на сервере стартует задача для создания резервной копии базы данных и файлов сайта.&lt;&#x2F;p&gt;
+&lt;p&gt;В один прекрасный день, по внешним обстоятельствам (обновление операционной системы, ошибка в приложении и т. п.), 
+механизм архивации перестал работать. Об аварии никто не узнал, потому что мониторинг не был подключён.&lt;&#x2F;p&gt;
+&lt;p&gt;Владелец магазина решил обновить версию программного обеспечения, чтобы добавить возможность интеграции с Facebook. 
+Обновление завершилось с ошибкой, потребовалось откатить файлы и базу данных до состояния вчерашнего дня. 
+Так как механизм архивирования сломался месяц назад, то и данные в архиве 
+остались месячной давности. При этом за прошедший месяц было добавлено 1000 товарных позиций, обновлена вёрстка сайта, 
+опубликованы 30 новостей и 5 акций.&lt;&#x2F;p&gt;
+&lt;p&gt;Перед владельцем магазина встал выбор: отказаться от месяца работ над сайтом или попытаться устранить ошибку обновления
+текущей версии сайта. Независимо от выбранного варианта, бизнес понесёт убытки.&lt;&#x2F;p&gt;
+&lt;p&gt;Если бы он подключил систему мониторинга, узнал бы об аварии заблаговременно.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;monitoring-dolzhen-byt-nezavisim-ot-toi-sistemy-za-kotoroi-on-nabliudaet&quot;&gt;Мониторинг должен быть независим от той системы, за которой он наблюдает&lt;&#x2F;h3&gt;
+&lt;p&gt;Второй пример — агентство новостей. Каждый вечер оно рассылает своим подписчикам письмо с новостями за день.
+В письме содержатся ссылки на сайт агентства и партнёрские сайты. Почтовая рассылка отправляется каждый день в 17:00 
+с помощью специальной задачи на сервере. &lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;why-monitoring-2.png&quot; alt=&quot;alt text&quot; title=&quot;Внешний мониторинг&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;По внешним обстоятельствам (обновление операционной системы, ошибка в приложении и т. п.) 
+изменился пароль для входа в учётную запись на почтовом сервере. 
+В задаче рассылки был встроен механизм отправки письма на почту о состоянии задачи. 
+Сотрудница, которая проверяла подобные письма, ушла на две недели в отпуск. Её почту переадресовали коллеге, 
+но не проинформировали о необходимости следить за рассылкой. Главный редактор спокоен и уверен, 
+что почтовая рассылка работает.&lt;&#x2F;p&gt;
+&lt;p&gt;Наступает праздничный день, на который очень рассчитывают рекламодатели. Рассылка не приходит.
+Один из партнёров пишет гневное письмо о том, что их реклама не публикуется, рассылки нет. 
+В итоге агентство получает урон репутации и потерю прибыли. Полуавтоматический мониторинг с участием людей дал сбой.&lt;&#x2F;p&gt;
+&lt;p&gt;Если бы компания подключила внешнюю и независимую систему мониторинга, то проблему рассылки удалось бы устранить 
+в кратчайшие сроки.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;zadachi-s-kotorymi-robot-spravliaetsia-luchshe-chem-chelovek-sleduet-doverit-robotu&quot;&gt;Задачи, с которыми робот справляется лучше, чем человек, следует доверить роботу&lt;&#x2F;h3&gt;
+&lt;p&gt;Непрерывный мониторинг требует большого внимания и сил. 
+Люди устают, легко отвлекаются, забывают информацию, болеют и уходят в отпуска.
+Автоматическая система мониторинга работает круглосуточно, не зная усталости, в рамках своей программы.&lt;&#x2F;p&gt;
+&lt;p&gt;Поэтому механическую и рутинную работу лучше отдать роботам.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;why-monitoring-3.png&quot; alt=&quot;alt text&quot; title=&quot;Автоматический мониторинг&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;monitoring-kak-servis&quot;&gt;Мониторинг как сервис&lt;&#x2F;h3&gt;
+&lt;p&gt;Существуют два вида приложений для непрерывного и автоматического мониторинга серверных задач: серверные и облачные.&lt;&#x2F;p&gt;
+&lt;p&gt;Первые требуют установки на сервер, специальные знания по теме. Вторые предоставляют готовый сервис с поддержкой, 
+без необходимости глубокого погружения в тему мониторинга.&lt;&#x2F;p&gt;
+&lt;p&gt;В облачных сервисах вам достаточно &lt;a href=&quot;https:&#x2F;&#x2F;docs.cronbox.ru&#x2F;getting-started&#x2F;&quot;&gt;подключить&lt;&#x2F;a&gt; задачи 
+к системе мониторинга — сервис будет следить за их выполнением и 
+уведомит вас по почте и&#x2F;или в Telegram, когда:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;задача отработала успешно;&lt;&#x2F;li&gt;
+&lt;li&gt;задача не запустилась или отработала с ошибкой;&lt;&#x2F;li&gt;
+&lt;li&gt;задача работала дольше, чем обычно.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Планировщик задач Cron</title>
+		<published>2020-05-07T00:00:00+00:00</published>
+		<updated>2021-02-28T00:00:00+00:00</updated>
+		<link href="https://blog.cronbox.ru/planirovschik-zadanii-cron/" type="text/html"/>
+		<id>https://blog.cronbox.ru/planirovschik-zadanii-cron/</id>
+		<content type="html">&lt;h2 id=&quot;vvedenie&quot;&gt;Введение&lt;&#x2F;h2&gt;
+&lt;p&gt;Cron — это программа, которая выполняет задания в рамках указанного расписания. 
+Такой класс программ обычно называют планировщиками задач.&lt;&#x2F;p&gt;
+&lt;p&gt;В качестве задач выступают команды из оболочки операционной системы. &lt;&#x2F;p&gt;
+&lt;p&gt;Основные возможности:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Запускать задачи в указанные даты и время.&lt;&#x2F;li&gt;
+&lt;li&gt;Запускать задачи с интервалом — например, раз в 5 минут.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;failovaia-struktura&quot;&gt;Файловая структура&lt;&#x2F;h3&gt;
+&lt;p&gt;Cron поддерживает множественные места хранения расписаний. Это сделано для того, чтобы:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Каждый пользователь мог работать только со своими задачами.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Разделить выполнение задач тематически. Например, если положить скрипт в каталог &lt;code&gt;&#x2F;etc&#x2F;cron.daily&lt;&#x2F;code&gt;, он выполнится 1 раз в сутки.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;Главный файл с расписаниями — &lt;code&gt;&#x2F;etc&#x2F;crontab&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Тематические каталоги:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&#x2F;etc&#x2F;cron.hourly&#x2F;*&lt;&#x2F;code&gt; — сценарии, выполняющиеся каждый час.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;&#x2F;etc&#x2F;cron.daily&#x2F;*&lt;&#x2F;code&gt; — сценарии, выполняющиеся каждый день.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;&#x2F;etc&#x2F;cron.weekly&#x2F;*&lt;&#x2F;code&gt; — сценарии, выполняющиеся каждую неделю.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;&#x2F;etc&#x2F;cron.monthly&#x2F;*&lt;&#x2F;code&gt; — сценарии, выполняющиеся каждый месяц.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;В тематические каталоги помещаются готовые скрипты, расписание для скриптов не указывается. 
+Если создать скрипт в каталоге &lt;code&gt;&#x2F;etc&#x2F;cron.hourly&lt;&#x2F;code&gt;, то он будет запускаться 1 раз в час. &lt;&#x2F;p&gt;
+&lt;p&gt;Если нужно сохранить расписание в отдельном файле, то можно поместить его в каталог &lt;code&gt;&#x2F;etc&#x2F;cron.d&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;format-zapisi&quot;&gt;Формат записи&lt;&#x2F;h3&gt;
+&lt;p&gt;Существует 2 формата записи:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;с указанием имени пользователя — используется только для файла &lt;code&gt;crontab&lt;&#x2F;code&gt;, например, вот так:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;lt;минута&amp;gt; &amp;lt;час&amp;gt; &amp;lt;день-месяца&amp;gt; &amp;lt;месяц&amp;gt; &amp;lt;день-недели&amp;gt; &amp;lt;пользователь&amp;gt; &amp;lt;команда&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;без указания — используется для всех остальных случаев.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;lt;минута&amp;gt; &amp;lt;час&amp;gt; &amp;lt;день-месяца&amp;gt; &amp;lt;месяц&amp;gt; &amp;lt;день-недели&amp;gt; &amp;lt;команда&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Если значение поля не важно, то достаточно указать знак «&lt;code&gt;*&lt;&#x2F;code&gt;» (звёздочка). 
+В таком случае cron использует предоставленные значения.
+Но что будет, если указать для всех временных полей «&lt;code&gt;*&lt;&#x2F;code&gt;»? Cron вызовет команду раз в минуту.&lt;&#x2F;p&gt;
+&lt;p&gt;В главном конфигурационном файле &lt;code&gt;&#x2F;etc&#x2F;crontab&lt;&#x2F;code&gt; добавлены подсказки в виде комментариев:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;# ┌───────────── minute (0 - 59)
+# │ ┌───────────── hour (0 - 23)
+# │ │ ┌───────────── day of the month (1 - 31)
+# │ │ │ ┌───────────── month (1 - 12)
+# │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday;
+# │ │ │ │ │                                   7 is also Sunday on some systems)
+# │ │ │ │ │
+# │ │ │ │ │
+# * * * * * command to execute
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;primery-intervalov&quot;&gt;Примеры интервалов&lt;&#x2F;h3&gt;
+&lt;p&gt;Запускать скрипт для резервного копирования каждый вечер в 23:00 от пользователя &lt;code&gt;backup&lt;&#x2F;code&gt;:&lt;br &#x2F;&gt;
+&lt;code&gt;0 23 * * * backup &#x2F;scripts&#x2F;backup.sh
+   &lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Запускать скрипт каждые 15 минут:&lt;br &#x2F;&gt;
+&lt;code&gt;*&#x2F;15 * * * * backup &#x2F;scripts&#x2F;fetch.sh
+   &lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Запускать скрипт только в выходные дни:&lt;br &#x2F;&gt;
+&lt;code&gt;*&#x2F;15 * * * 6-7 backup &#x2F;scripts&#x2F;fetch.sh
+   &lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Запускать скрипт в 5 утра, 1-го числа января и февраля:&lt;br &#x2F;&gt;
+&lt;code&gt;5 4 1 1-2 * backup &#x2F;scripts&#x2F;fetch.sh
+   &lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;rabota-s-zadachami&quot;&gt;Работа с задачами&lt;&#x2F;h2&gt;
+&lt;p&gt;Для примера запустим скрипт резервного копирования &lt;code&gt;&#x2F;home&#x2F;eugene&#x2F;scripts&#x2F;backup.sh&lt;&#x2F;code&gt; каждый день в 23:00.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;kak-dobavit-zadachu-sposob-1&quot;&gt;Как добавить задачу (способ № 1)&lt;&#x2F;h4&gt;
+&lt;p&gt;Открываем редактор с расписанием для текущего пользователя&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-shell script&quot; data-lang=&quot;shell script&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;crontab -e
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;и добавляем строчку:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;0 23 * * * &#x2F;home&#x2F;eugene&#x2F;scripts&#x2F;backup.sh
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;В таком случае имя пользователя указывать не нужно.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;kak-dobavit-zadachu-sposob-2&quot;&gt;Как добавить задачу (способ № 2)&lt;&#x2F;h4&gt;
+&lt;p&gt;Второй способ — создать файл с расписанием в каталог &lt;code&gt;&#x2F;etc&#x2F;cron.d&lt;&#x2F;code&gt; — например, &lt;code&gt;&#x2F;etc&#x2F;cron.d&#x2F;site-backup&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;0 23 * * * eugene &#x2F;home&#x2F;eugene&#x2F;scripts&#x2F;backup.sh
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;primeniaem-nastroiki&quot;&gt;Применяем настройки&lt;&#x2F;h3&gt;
+&lt;p&gt;Чтобы cron перечитал файлы с расписаниями, необходимо перезапустить его службу:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-shell script&quot; data-lang=&quot;shell script&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;service crond restart
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;kak-udalit-zadachu&quot;&gt;Как удалить задачу&lt;&#x2F;h3&gt;
+&lt;p&gt;Это можно сделать как минимум тремя способами:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Удалить файл с заданием.&lt;&#x2F;li&gt;
+&lt;li&gt;Удалить строчку из файла.&lt;&#x2F;li&gt;
+&lt;li&gt;Закомментировать строчку.&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;#0 23 * * * backup &#x2F;scripts&#x2F;backup.sh
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;Независимо от выбранного способа, для того чтобы cron обновил список действующих расписаний, 
+необходимо перезапустить службу:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-shell script&quot; data-lang=&quot;shell script&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;service crond restart
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;poleznye-ssylki&quot;&gt;Полезные ссылки&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;docs.cronbox.ru&#x2F;getting-started&#x2F;&quot;&gt;Как мониторить cron&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;crontab.cronbox.ru&#x2F;&quot;&gt;Crontab от Cronbox&lt;&#x2F;a&gt; — бесплатный сервис для генерации расписания cron. 
+Достаточно указать расписание в формате cron, и сервис покажет, когда будет запущена задача.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;&#x2F;tags&#x2F;cron&quot;&gt;Другие посты из цикла про cron&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+	</entry>
+</feed>
