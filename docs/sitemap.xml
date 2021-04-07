@@ -2,7 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://blog.cronbox.ru/</loc>
-        <lastmod>2021-04-04</lastmod>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/categories/</loc>
@@ -51,7 +50,7 @@
     </url>
     <url>
         <loc>https://blog.cronbox.ru/kak-monitorit-borg-backup/</loc>
-        <lastmod>2021-03-29</lastmod>
+        <lastmod>2021-04-07</lastmod>
     </url>
     <url>
         <loc>https://blog.cronbox.ru/kak-monitorit-zadazhi-v-windows/</loc>

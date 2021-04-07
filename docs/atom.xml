@@ -5,61 +5,62 @@
 	<link href="https://blog.cronbox.ru/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://blog.cronbox.ru"/>
 	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2021-03-29T00:00:00+00:00</updated>
+	<updated>2021-04-07T00:00:00+00:00</updated>
 	<id>https://blog.cronbox.ru/atom.xml</id>
 	<entry xml:lang="en">
 		<title>Как настроить мониторинг для Borg Backup</title>
 		<published>2021-03-29T00:00:00+00:00</published>
-		<updated>2021-03-29T00:00:00+00:00</updated>
+		<updated>2021-04-07T00:00:00+00:00</updated>
 		<link href="https://blog.cronbox.ru/kak-monitorit-borg-backup/" type="text/html"/>
 		<id>https://blog.cronbox.ru/kak-monitorit-borg-backup/</id>
-		<content type="html">&lt;p&gt;Borg — это отличный инструмент для организации резервного копирования в Linux. Мы несколько лет используем его в production.&lt;br &#x2F;&gt;
-Более подробно про Borg в &lt;a href=&quot;https:&#x2F;&#x2F;b.tinyops.ru&#x2F;linux-backup-with-borg&#x2F;&quot;&gt;отдельной статье&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
-&lt;p&gt;Допустим резервное копирование настроено, запускается из &lt;a href=&quot;&#x2F;planirovschik-zadanii-cron&#x2F;&quot;&gt;планировщика cron&lt;&#x2F;a&gt; каждый день, в час ночи.
-Для обеспечения надежности &lt;a href=&quot;&#x2F;zachem-nuzhen-monitoring&#x2F;&quot;&gt;необходим мониторинг&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
-&lt;p&gt;Несмотря на то, что cron проверен десятилетиями и зарекомендовал себя как надёжное приложение, на его работу могут повлиять
+		<content type="html">&lt;p&gt;Borg — это инструмент для резервного копирования в Linux.&lt;&#x2F;p&gt;
+&lt;p&gt;Более подробно про Borg — в &lt;a href=&quot;https:&#x2F;&#x2F;b.tinyops.ru&#x2F;linux-backup-with-borg&#x2F;&quot;&gt;отдельной статье&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Допустим, резервное копирование настроено и запускается из &lt;a href=&quot;&#x2F;planirovschik-zadanii-cron&#x2F;&quot;&gt;планировщика cron&lt;&#x2F;a&gt; каждый день в час ночи.
+Для обеспечения надёжности &lt;a href=&quot;&#x2F;zachem-nuzhen-monitoring&#x2F;&quot;&gt;необходим мониторинг&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Несмотря на то что cron проверен десятилетиями и зарекомендовал себя как надёжное приложение, на его работу могут повлиять
 внешние факторы:&lt;&#x2F;p&gt;
 &lt;ul&gt;
-&lt;li&gt;Обновления операционной системы;&lt;&#x2F;li&gt;
-&lt;li&gt;Работа других приложений;&lt;&#x2F;li&gt;
-&lt;li&gt;Сетевой ресурс для резервных копий более недоступен;&lt;&#x2F;li&gt;
-&lt;li&gt;Закончилось место на жёстком диске;&lt;&#x2F;li&gt;
-&lt;li&gt;Ошибки администратора (человеческий фактор).&lt;&#x2F;li&gt;
+&lt;li&gt;обновления операционной системы;&lt;&#x2F;li&gt;
+&lt;li&gt;работа других приложений;&lt;&#x2F;li&gt;
+&lt;li&gt;сетевой ресурс для резервных копий более недоступен;&lt;&#x2F;li&gt;
+&lt;li&gt;закончилось место на жёстком диске;&lt;&#x2F;li&gt;
+&lt;li&gt;ошибки администратора (человеческий фактор).&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 &lt;p&gt;В таких случаях поможет &lt;a href=&quot;https:&#x2F;&#x2F;cp.cronbox.ru&quot;&gt;мониторинг cron-задач&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;nastroika&quot;&gt;Настройка&lt;&#x2F;h2&gt;
+&lt;p&gt;Настроим мониторинг borg с помощью сервиса &lt;a href=&quot;https:&#x2F;&#x2F;cronbox.ru&quot;&gt;Cronbox&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;sozdanie-monitora&quot;&gt;Создание монитора&lt;&#x2F;h3&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;cp.cronbox.ru&quot;&gt;Заходим&lt;&#x2F;a&gt; под своей учётной записью в Cronbox&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;cp.cronbox.ru&quot;&gt;Заходим&lt;&#x2F;a&gt; под своей учётной записью в Cronbox.&lt;&#x2F;p&gt;
 &lt;&#x2F;li&gt;
 &lt;li&gt;
 &lt;p&gt;Добавляем новый монитор для cron-задачи:&lt;br &#x2F;&gt;
 &lt;img src=&quot;&#x2F;images&#x2F;backup-borg&#x2F;borg-backup__add-monitor.png&quot; alt=&quot;Добавление нового cron-монитора&quot; title=&quot;Добавление нового cron-монитора&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;&#x2F;li&gt;
 &lt;li&gt;
-&lt;p&gt;Указываем название монитора, расписание, идентичное тому по которому запускается borg:&lt;br &#x2F;&gt;
+&lt;p&gt;Указываем название монитора и расписание, идентичное тому по которому запускается Borg:&lt;br &#x2F;&gt;
 &lt;img src=&quot;&#x2F;images&#x2F;backup-borg&#x2F;borg-backup__new-monitor-form.png&quot; alt=&quot;Форма создания нового монитора&quot; title=&quot;Форма создания нового монитора&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;&#x2F;li&gt;
 &lt;li&gt;
-&lt;p&gt;Настраиваем условия уведомлений и каналы по которым сервис уведомит нас о задаче:&lt;br &#x2F;&gt;
+&lt;p&gt;Настраиваем условия уведомлений и каналы, по которым сервис оповестит нас о статусе задачи:&lt;br &#x2F;&gt;
 &lt;img src=&quot;&#x2F;images&#x2F;backup-borg&#x2F;borg-backup__notifications.png&quot; alt=&quot;Условия и каналы уведомлений&quot; title=&quot;Условия и каналы уведомлений&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;&#x2F;li&gt;
 &lt;li&gt;
-&lt;p&gt;Нажимаем &amp;quot;Сохранить&amp;quot;.&lt;&#x2F;p&gt;
+&lt;p&gt;Нажимаем «Сохранить».&lt;&#x2F;p&gt;
 &lt;&#x2F;li&gt;
 &lt;&#x2F;ol&gt;
 &lt;h3 id=&quot;integratsiia-monitora-s-zadachei-v-cron&quot;&gt;Интеграция монитора с задачей в cron&lt;&#x2F;h3&gt;
-&lt;p&gt;Монитор создан. Заходим на страницу монитора, во кладку &amp;quot;Интеграция&amp;quot;. Копируем оттуда уникальную ссылку:&lt;&#x2F;p&gt;
+&lt;p&gt;Монитор создан. Заходим на страницу монитора — во кладку «Интеграция». Копируем оттуда уникальную ссылку:&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;backup-borg&#x2F;borg-backup__integration.png&quot; alt=&quot;Интеграция монитора и задачи&quot; title=&quot;Интеграция монитора и задачи&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Например, &lt;code&gt;https:&#x2F;&#x2F;p.cronbox.ru&#x2F;p&#x2F;3cbaaeb7-5ef2-4a74-8342-528e5f56e6e3&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
-&lt;p&gt;На вашем сервере добавляем вызов ссылки после вызова &lt;code&gt;borg&lt;&#x2F;code&gt;. Например, вот так:&lt;&#x2F;p&gt;
+&lt;p&gt;На своём сервере добавляем вызов ссылки после вызова &lt;code&gt;borg&lt;&#x2F;code&gt;. Например, вот так:&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
 &lt;code&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;0 3 * * * &#x2F;root&#x2F;scripts&#x2F;borg-backup.sh &amp;amp;&amp;amp; curl https:&#x2F;&#x2F;p.cronbox.ru&#x2F;p&#x2F;3cbaaeb7-5ef2-4a74-8342-528e5f56e6e3
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;p&gt;В &lt;code&gt;03:00&lt;&#x2F;code&gt; на вашем сервере будет запущен скрипт &lt;code&gt;&#x2F;root&#x2F;scripts&#x2F;borg-backup.sh&lt;&#x2F;code&gt;. Если скрипт отработает без ошибок, то
-следующей командой будет запущена утилита curl, которая выполнит запрос к уникальной ссылке монитора.&lt;&#x2F;p&gt;
-&lt;p&gt;Сервис будет следить чтобы отклик от cron-задачи пришёл вовремя, в противном случае — напишет по почте и&#x2F;или в Telegram.&lt;&#x2F;p&gt;
+&lt;p&gt;В &lt;code&gt;03:00&lt;&#x2F;code&gt; на сервере запустится скрипт &lt;code&gt;&#x2F;root&#x2F;scripts&#x2F;borg-backup.sh&lt;&#x2F;code&gt;. Если скрипт отработает без ошибок,
+следующей командой будет запустится утилита curl, которая выполнит запрос к уникальной ссылке монитора.&lt;&#x2F;p&gt;
+&lt;p&gt;Сервис будет следить, чтобы отклик от cron-задачи пришёл вовремя, в противном случае — напишет на почту и&#x2F;или в Telegram.&lt;&#x2F;p&gt;
 </content>
 	</entry>
 	<entry xml:lang="en">
